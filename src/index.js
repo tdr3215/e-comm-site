@@ -2,17 +2,18 @@ import React from "react";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
+
 import reportWebVitals from "./reportWebVitals";
 import New from "./components/New";
 import Navbar from "./components/Navbar";
+import Inventory from "./components/Inventory";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router>
     <Navbar />
     <Routes>
-      <Route name="Home" exact path="/" element={<App />} />
+      <Route name="Home" exact path="/" element={<Inventory />} />
       <Route name="New" path="/new" element={<New />} />
     </Routes>
   </Router>

@@ -5,7 +5,9 @@ const Navbar = () => {
     <div>
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand">Thread-a-Day Market</a>
+          <Link to="/" className="navbar-brand">
+            Thread-a-Day Market
+          </Link>
 
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
