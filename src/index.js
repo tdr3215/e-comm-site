@@ -1,11 +1,12 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
 import reportWebVitals from "./reportWebVitals";
 import New from "./components/New";
 import Navbar from "./components/Navbar";
+import Landing from "./components/Landing";
 import Inventory from "./components/Inventory";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -13,7 +14,8 @@ root.render(
   <Router>
     <Navbar />
     <Routes>
-      <Route name="Home" exact path="/" element={<Inventory />} />
+      <Route name="Landing" exact path="/" element={<Landing />} />
+      <Route name="Home" path="/home" element={<Inventory />} />
       <Route name="New" path="/new" element={<New />} />
     </Routes>
   </Router>

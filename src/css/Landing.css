@@ -1,0 +1,13 @@
+.content {
+  height: 85vh;
+}
+
+body {
+  background-color: #809575;
+}
+
+.col-lg {
+  height: 20rem;
+  width: 20rem;
+  background-color: white;
+}
