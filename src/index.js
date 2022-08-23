@@ -11,7 +11,7 @@ import Inventory from "./components/Inventory";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Router>
+  <Router basename="/ecomm-site">
     <Navbar />
     <Routes>
       <Route name="Landing" exact path="/" element={<Landing />} />
