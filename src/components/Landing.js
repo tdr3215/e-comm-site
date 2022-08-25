@@ -6,7 +6,10 @@ const Landing = (props) => {
         <div className="col-lg mx-5">
           <h1>Thread -a- Day Market</h1>
         </div>
-        <div className="col-lg"></div>
+        <div className="col-lg">
+
+          {/* TODO: add new product */}
+        </div>
       </div>
     </div>
   );

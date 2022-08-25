@@ -8,6 +8,10 @@ import New from "./components/New";
 import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import Inventory from "./components/Inventory";
+import ProductDetails from "./components/ProductDetails";
+
+
+// const product
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -15,8 +19,13 @@ root.render(
     <Navbar />
     <Routes>
       <Route name="Landing" exact path="/" element={<Landing />} />
-      <Route name="Home" path="/home" element={<Inventory />} />
+      <Route name="Home" path="/products" element={<Inventory />} />
       <Route name="New" path="/new" element={<New />} />
+      <Route
+        name="ProductDetails"
+        path="products/:id"
+        element={<ProductDetails />}
+      />
     </Routes>
   </Router>
 );

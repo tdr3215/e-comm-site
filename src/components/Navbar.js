@@ -11,7 +11,7 @@ const Navbar = () => {
 
           <ul className="navbar-nav justify-content-evenly mb-2 mb-lg-0 ">
             <li className="nav-item">
-              <Link to="/home" className="nav-link">
+              <Link to="/products" className="nav-link">
                 Products
               </Link>
             </li>

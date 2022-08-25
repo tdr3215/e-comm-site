@@ -1,71 +1,46 @@
 import { useState } from "react";
 import Product from "./Product";
-import scarf from "../images/scarf.png";
-import sweater from "../images/sweater.png";
-import hat from "../images/hat.png";
-import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
+import data from "../data/db.json";
 import "../css/Inventory.css";
+
 const Inventory = () => {
-  // TODO: generate an empty array in state
-  //   console.log(hat);
+  const [inventory, setInventory] = useState(data);
 
-  console.log(scarf);
-  const [inventory, setInventory] = useState([]);
-
-  // TODO: add btn for creating new product
-
-  const showAll = () => {
-    setInventory([
-      {
-        id: 1,
-        name: "Scarf",
-        description: "Don't let the storm stop you from making snow angels",
-        imgURL: scarf,
-      },
-      {
-        id: 2,
-        name: "Sweater",
-        description: "A fluffy sweater ready for winter",
-        imgURL: sweater,
-      },
-      {
-        id: 3,
-        name: "Hat",
-        description: "A cozy hat to keep you warm at a campfire",
-        imgURL: hat,
-      },
-    ]);
+  const handleDelete = (id) => {
+    // TODO: delete product from dattabase based off of id
   };
 
-  // TODO: add functionality for individual page for each product
+  const handleEdit = () => {
+    // TODO: edit product and update database
+  };
 
   return (
-  
-    
-      <div className="container">
-        <div className="row content mx-auto">
-          <button className="btn btn-info" onClick={showAll}>
-            Populate Page
-          </button>
-          <div className="col">
-            <div className="row mt-4">
-              <div className="col">
-                {inventory.map((product) => {
+    <div className="container">
+      <div className="row content mx-auto">
+        <Link to={"/new"} className="btn btn-info">
+          Add New Product
+        </Link>
+        <div className="col">
+          <div className="row mt-4">
+            <div className="col">
+              {data &&
+                inventory.map((product, i) => {
                   return (
                     <Product
-                      key={product.id}
-                      imgURL={product.imgURL}
+                      key={i}
+                      imgURL={process.env.PUBLIC_URL + product.imgURL}
                       name={product.name}
                       description={product.description}
+                      id={product.id}
                     />
                   );
                 })}
-              </div>
             </div>
           </div>
         </div>
       </div>
-
+    </div>
   );
 };
 export default Inventory;

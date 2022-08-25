@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import "../css/Product.css";
 
 const Product = (props) => {
-  const { name, description, imgURL } = props;
+  const { name, description, imgURL, id } = props;
 
   return (
     <div className="card mb-4 mx-auto">
@@ -9,9 +10,10 @@ const Product = (props) => {
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{description}</p>
-        {/* <a href="#" className="btn btn-primary">
-          Go somewhere
-        </a> */}
+
+        <Link to={`/products/${id}`} className="btn btn-info">
+          Details
+        </Link>
       </div>
     </div>
   );
