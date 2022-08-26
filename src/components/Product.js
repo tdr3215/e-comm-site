@@ -14,6 +14,12 @@ const Product = (props) => {
         <Link to={`/products/${id}`} className="btn btn-info">
           Details
         </Link>
+        <Link to={`/products/${id}/edit`} className="btn btn-warning">
+          Edit
+        </Link>
+        <a href="#" className="btn btn-danger">
+          Delete
+        </a>
       </div>
     </div>
   );

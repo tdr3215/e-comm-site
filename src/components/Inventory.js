@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Product from "./Product";
 import { Link } from "react-router-dom";
 import data from "../data/db.json";
 import "../css/Inventory.css";
 
 const Inventory = () => {
-  const [inventory, setInventory] = useState(data);
+  const [inventory, setInventory] = useState([]);
 
   const handleDelete = (id) => {
     // TODO: delete product from dattabase based off of id
@@ -14,6 +14,14 @@ const Inventory = () => {
   const handleEdit = () => {
     // TODO: edit product and update database
   };
+
+  useEffect(() => {
+    fetch("http://localhost:3000/products")
+      .then((res) => res.json())
+      .then((data) => {
+        setInventory(data);
+      });
+  }, []);
 
   return (
     <div className="container">

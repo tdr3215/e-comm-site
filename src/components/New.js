@@ -8,7 +8,7 @@ const New = () => {
       <div className="row">
         <form>
           <div className="mb-3">
-            <label for="name" className="form-label">
+            <label htmlFor="name" className="form-label">
               Name
             </label>
             <input
@@ -19,14 +19,16 @@ const New = () => {
             />
           </div>
           <div className="mb-3">
-            <label for="description" className="form-label">
+            <label htmlFor="description" className="form-label">
               Description
             </label>
             <textarea className="form-control" id="description"></textarea>
           </div>
           <div className="input-group mb-3">
+            <div></div>
             <span className="input-group-text">$</span>
             <span className="input-group-text">0.00</span>
+
             <input
               type="text"
               className="form-control"
@@ -36,7 +38,7 @@ const New = () => {
           </div>
           <div className="input-group mb-3">
             <input type="file" className="form-control" id="imgURL" />
-            <label className="input-group-text" for="imgURL">
+            <label className="input-group-text" htmlFor="imgURL">
               Upload
             </label>
           </div>
