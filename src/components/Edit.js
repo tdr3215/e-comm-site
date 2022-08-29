@@ -1,42 +1,54 @@
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../api/products";
-import { useState } from "react";
-import { v4 as uuid } from "uuid";
-const New = (props) => {
+const Edit = () => {
+  const { id } = useParams();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState("");
   const [imgURL, setimgURL] = useState("");
+  const [currProduct, setCurrProduct] = useState("");
 
-  const data = {
-    id: uuid(),
+  const navigate = useNavigate();
+  let newData = {
+    id: id,
     name: name,
     description: description,
     price: price,
     imgURL: imgURL,
   };
 
-  const navigate = useNavigate();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const postProduct = await api.post("http://localhost:8000/products", data);
-    if (postProduct) {
-      navigate("/products");
-    }
+  const handleUpdate = async () => {
+    const res = await api.put(`/products/${id}`, newData);
+    setCurrProduct(res.data);
+    navigate("/products");
   };
 
+  const findProduct = async () => {
+    const res = await api.get(`/products/${id}`);
+    return res.data;
+  };
+  useEffect(() => {
+    const getProduct = async () => {
+      const found = await findProduct();
+      setCurrProduct(found);
+    };
+    getProduct();
+  }, [currProduct]);
+
+  //   JSX
   return (
     <div className="container">
       <div className="row">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(e) => e.preventDefault()}>
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Name
             </label>
             <input
-              value={name}
+              defaultValue={currProduct.name}
               onChange={(e) => {
-                setName(e.target.value);
+                e ? setName(e.target.value) : setName(name);
               }}
               type="text"
               className="form-control"
@@ -51,9 +63,11 @@ const New = (props) => {
             <textarea
               className="form-control"
               name="description"
-              value={description}
+              defaultValue={currProduct.description}
               onChange={(e) => {
-                setDescription(e.target.value);
+                e
+                  ? setDescription(e.target.value)
+                  : setDescription(description);
               }}
             ></textarea>
           </div>
@@ -65,11 +79,11 @@ const New = (props) => {
               type="number"
               className="form-control"
               name="price"
-              value={price}
-              aria-label="Dollar amount (with dot and two decimal places)"
+              defaultValue={currProduct.price}
               onChange={(e) => {
-                setPrice(e.target.value);
+                e ? setPrice(e.target.value) : setPrice(price);
               }}
+              aria-label="Dollar amount (with dot and two decimal places)"
             />
           </div>
 
@@ -77,13 +91,13 @@ const New = (props) => {
             <div className="input-group mb-3">
               <span className="input-group-text">https://example.com/img</span>
               <input
-                value={imgURL}
-                onChange={(e) => {
-                  setimgURL(e.target.value);
-                }}
                 type="text"
                 className="form-control"
                 id="basic-url"
+                defaultValue={currProduct.imgURL}
+                onChange={(e) => {
+                  e ? setimgURL(e.target.value) : setimgURL(imgURL);
+                }}
                 aria-describedby="basic-addon3"
               />
             </div>
@@ -93,9 +107,9 @@ const New = (props) => {
           <button
             className="btn btn-success"
             type="submit"
-            onClick={handleSubmit}
+            onClick={handleUpdate}
           >
-            Submit
+            Update
           </button>
         </div>
       </div>
@@ -103,4 +117,4 @@ const New = (props) => {
   );
 };
 
-export default New;
+export default Edit;

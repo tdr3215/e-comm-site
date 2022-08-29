@@ -1,0 +1,12 @@
+{
+  "name": "data",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server -p 8000 -w db.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

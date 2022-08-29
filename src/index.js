@@ -9,9 +9,7 @@ import Navbar from "./components/Navbar";
 import Landing from "./components/Landing";
 import Inventory from "./components/Inventory";
 import ProductDetails from "./components/ProductDetails";
-
-
-// const product
+import Edit from "./components/Edit";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -26,6 +24,7 @@ root.render(
         path="products/:id"
         element={<ProductDetails />}
       />
+      <Route name="Edit" path="/products/:id/edit" element={<Edit />} />
     </Routes>
   </Router>
 );

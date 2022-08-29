@@ -3,24 +3,26 @@ import Product from "./Product";
 import { Link } from "react-router-dom";
 import data from "../data/db.json";
 import "../css/Inventory.css";
+import api from "../api/products";
 
 const Inventory = () => {
   const [inventory, setInventory] = useState([]);
 
-  const handleDelete = (id) => {
-    // TODO: delete product from dattabase based off of id
-  };
+  // API calls
 
-  const handleEdit = () => {
-    // TODO: edit product and update database
+  const getProducts = async () => {
+    const res = await api.get("/products");
+    return res.data;
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setInventory(data);
-      });
+    const getAllProducts = async () => {
+      const allProducts = await getProducts();
+      if (allProducts) {
+        setInventory(allProducts);
+      }
+    };
+    getAllProducts();
   }, []);
 
   return (
@@ -37,7 +39,7 @@ const Inventory = () => {
                   return (
                     <Product
                       key={i}
-                      imgURL={process.env.PUBLIC_URL + product.imgURL}
+                      imgURL={product.imgURL}
                       name={product.name}
                       description={product.description}
                       id={product.id}
