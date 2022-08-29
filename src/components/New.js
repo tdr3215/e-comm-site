@@ -28,7 +28,11 @@ const New = (props) => {
   return (
     <div className="container">
       <div className="row">
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
           <div className="mb-3">
             <label htmlFor="name" className="form-label">
               Name

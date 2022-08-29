@@ -8,11 +8,11 @@
       "imgURL": "https://images.unsplash.com/photo-1601379327928-bedfaf9da2d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2787&q=80"
     },
     {
-      "id": "25641f1c-04e9-4d24-95a7-731e882bd3de",
-      "name": "",
-      "description": "",
-      "price": "",
-      "imgURL": ""
+      "name": "Knit hat",
+      "description": "A beautiful hat that I found outside",
+      "price": "75",
+      "imgURL": "https://images.unsplash.com/photo-1521369909029-2afed882baee?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
+      "id": "25641f1c-04e9-4d24-95a7-731e882bd3de"
     },
     {
       "id": "61ebe8ec-a651-44ca-8c58-e56bd95a8434",

@@ -7,34 +7,31 @@ const Edit = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [imgURL, setimgURL] = useState("");
-  const [currProduct, setCurrProduct] = useState("");
-
   const navigate = useNavigate();
-  let newData = {
-    id: id,
-    name: name,
-    description: description,
-    price: price,
-    imgURL: imgURL,
+
+  const handleUpdate = async (p) => {
+    await api.put(`/products/${id}`, {
+      name,
+      description,
+      price,
+      imgURL,
+    });
+    navigate(`/products/${id}`);
   };
 
-  const handleUpdate = async () => {
-    const res = await api.put(`/products/${id}`, newData);
-    setCurrProduct(res.data);
-    navigate("/products");
-  };
-
-  const findProduct = async () => {
-    const res = await api.get(`/products/${id}`);
-    return res.data;
-  };
   useEffect(() => {
-    const getProduct = async () => {
-      const found = await findProduct();
-      setCurrProduct(found);
-    };
-    getProduct();
-  }, [currProduct]);
+    api
+      .get(`/products/${id}`)
+      .then((res) => {
+        return res.data;
+      })
+      .then((data) => {
+        setName(data.name);
+        setDescription(data.description);
+        setPrice(data.price);
+        setimgURL(data.imgURL);
+      });
+  }, []);
 
   //   JSX
   return (
@@ -46,14 +43,13 @@ const Edit = () => {
               Name
             </label>
             <input
-              defaultValue={currProduct.name}
               onChange={(e) => {
-                e ? setName(e.target.value) : setName(name);
+                setName(e.target.value);
               }}
               type="text"
               className="form-control"
               name="name"
-              placeholder="Add product name here"
+              defaultValue={name}
             />
           </div>
           <div className="mb-3">
@@ -63,11 +59,9 @@ const Edit = () => {
             <textarea
               className="form-control"
               name="description"
-              defaultValue={currProduct.description}
+              defaultValue={description}
               onChange={(e) => {
-                e
-                  ? setDescription(e.target.value)
-                  : setDescription(description);
+                setDescription(e.target.value);
               }}
             ></textarea>
           </div>
@@ -79,9 +73,9 @@ const Edit = () => {
               type="number"
               className="form-control"
               name="price"
-              defaultValue={currProduct.price}
+              defaultValue={price}
               onChange={(e) => {
-                e ? setPrice(e.target.value) : setPrice(price);
+                setPrice(e.target.value);
               }}
               aria-label="Dollar amount (with dot and two decimal places)"
             />
@@ -94,9 +88,9 @@ const Edit = () => {
                 type="text"
                 className="form-control"
                 id="basic-url"
-                defaultValue={currProduct.imgURL}
+                defaultValue={imgURL}
                 onChange={(e) => {
-                  e ? setimgURL(e.target.value) : setimgURL(imgURL);
+                  setimgURL(e.target.value);
                 }}
                 aria-describedby="basic-addon3"
               />

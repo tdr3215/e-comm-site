@@ -19,9 +19,8 @@ const ProductDetails = () => {
   useEffect(() => {
     const findByID = async () => {
       const found = await findProduct();
-      if (found) {
-        setProduct(found);
-      }
+
+      setProduct(found);
     };
     findByID(id);
   }, []);
