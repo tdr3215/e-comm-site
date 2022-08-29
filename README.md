@@ -56,7 +56,7 @@ I am currently stil having trouble creating a test suite. I think the issue lies
 
 ### Update
 
-![update page](/src/images/edit.png)
+![update page](/src/images/update.png)
 
 ## Wireframe
 
