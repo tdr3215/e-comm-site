@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Introduction
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+This project entails creating an e-commerce site from scratch using React. The goal is to implement full CRUD by allowing the user to create,read,update and delete products on the site. The database/api is currently connected to json-server.
 
-In the project directory, you can run:
+## Dependencies
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [react](https://reactjs.org)
+- [react-router-dom](https://www.npmjs.com/package/react-router-dom)
+- [json-server](https://www.npmjs.com/package/json-server)
+- [axios](https://axios-http.com/)
+- [uuid](https://www.npmjs.com/package/uuid)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Goals
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- full CRUD ✅
+- search filter capabilities
+- at least 5 different products ✅
+- view product details individually ✅
+- testing
+- deploy to gh-pages
+- deploy api to github pages
 
-### `npm run build`
+## Troubleshooting
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### API
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+I am currently working towards seperating the database from localhost:8000. It would ideally be called from a json server deployed to github pages. I am also working towards making a useFetch custom hook for fetching the data fromt he api across multiple compenents when necessary.
 
-### `npm run eject`
+### Components
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Most of the components I have are working. Currently, I don't have anything on the patterns page so I'll make a separate compenent for that in future versions of the app. I still need to work on creating search functionality to the products page.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Tests
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I am currently stil having trouble creating a test suite. I think the issue lies in testing the Link react component properly. I keep getting an error saying that I can only use "useHref()" in a Router compenent
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Screenshots
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Create
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![create page](/src/images/new.png)
 
-### Code Splitting
+### Read & Delete
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![read page](/src/images/read.png)
 
-### Analyzing the Bundle Size
+### Update
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![update page](/src/images/edit.png)
 
-### Making a Progressive Web App
+## Wireframe
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[wire-frame](https://github.com/tdr3215/e-comm-site/blob/main/Wireframe%20-TTS-ecomm.pdf)
