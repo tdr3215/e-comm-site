@@ -52,6 +52,7 @@ const Edit = () => {
               defaultValue={name}
             />
           </div>
+
           <div className="mb-3">
             <label htmlFor="description" className="form-label">
               Description
