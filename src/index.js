@@ -13,7 +13,7 @@ import Edit from "./components/Edit";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Router basename={process.env.PUBLIC_URL}>
+  <Router basename={"/"}>
     <Navbar />
     <Routes>
       <Route name="Landing" exact path="/" element={<Landing />} />
