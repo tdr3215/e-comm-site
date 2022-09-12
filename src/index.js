@@ -10,7 +10,7 @@ import Landing from "./components/Landing";
 import Inventory from "./components/Inventory";
 import ProductDetails from "./components/ProductDetails";
 import Edit from "./components/Edit";
-
+import Error from "./components/Error";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router basename={"/"}>
@@ -19,6 +19,7 @@ root.render(
       <Route name="Landing" exact path="/" element={<Landing />} />
       <Route name="Home" path="/products" element={<Inventory />} />
       <Route name="New" path="/new" element={<New />} />
+      <Route name="Error" path="/error" element={<Error />} />
       <Route
         name="ProductDetails"
         path="products/:id"

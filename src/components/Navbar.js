@@ -17,6 +17,7 @@ const Navbar = () => {
       navigate(`/products/${found.id}`);
     } catch (err) {
       console.error(err);
+      navigate("/error");
     }
   };
 
