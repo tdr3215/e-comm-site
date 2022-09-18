@@ -1,26 +1,36 @@
 import { Link, useNavigate } from "react-router-dom";
 import "../css/Navbar.css";
 import { getProducts } from "../components/Inventory";
-import { useState } from "react";
-import Error from "./Error";
+import { useEffect, useState } from "react";
+// import Error from "./Error";
+import profilePic from "../images/knit.png";
+import checkout from "../images/shopping-cart.png";
+import { auth, db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { query, collection, getDocs, where } from "firebase/firestore";
 
 const Navbar = () => {
-  const [query, setQuery] = useState("");
+  const [name, setName] = useState("");
+  const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
-  const filterProducts = async () => {
+  const fetchUserName = async () => {
     try {
-      const productList = await getProducts();
-      const found = await productList.find(
-        (p) => p.name.toUpperCase() === query.toUpperCase()
-      );
-      navigate(`/products/${found.id}`);
+      const usersRef = collection(db, "users");
+      const q = query(usersRef, where("uid", "==", user?.uid));
+      const doc = await getDocs(q);
+      const data = doc.docs[0].data();
+      setName(data.name);
     } catch (err) {
       console.error(err);
-      navigate("/error");
     }
   };
 
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate("/");
+    fetchUserName();
+  }, [user, loading]);
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -46,28 +56,13 @@ const Navbar = () => {
               </Link>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-              value={query}
-              onChange={(e) => {
-                setQuery(e.target.value);
-              }}
-            />
-            <button
-              onClick={filterProducts}
-              className="btn btn-outline-success"
-              type="submit"
-            >
-              Search
-            </button>
-            <Link className="btn btn-warning " to="/new">
-              Add New Product
+          <div className="justify-content-center">
+            <img className="icon img-fluid" src={profilePic} />
+            <span className="mx-2">{name}</span>
+            <Link to={"/checkout"}>
+              <img className="icon img-fluid mx-5" src={checkout} />
             </Link>
-          </form>
+          </div>
         </div>
       </nav>
     </div>
