@@ -1,7 +1,9 @@
 const Checkout = () => {
   return (
-    <div>
-      <h1>Checkout Page Pending...</h1>
+    <div className="container">
+      <div className="row justify-content-center">
+        <h1 className="mt-5 mb-5">Checkout Page Pending...</h1>
+      </div>
     </div>
   );
 };

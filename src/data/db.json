@@ -34,6 +34,13 @@
       "price": "4",
       "imgURL": "https://images.unsplash.com/photo-1624160719183-b3b9010a77c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8c3RyYXdiZXJyeXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
       "id": "17576457-b428-4822-989d-0b6d27babcfa"
+    },
+    {
+      "name": "Mercerized Cotton",
+      "description": "It's mercerized... *shrugs*",
+      "price": "13999.99",
+      "imgURL": "https://images.unsplash.com/photo-1502245610427-c7abdffde91b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2232&q=80",
+      "id": "3418ff44-1491-4f50-80fa-9744cdd1bbaf"
     }
   ]
 }
