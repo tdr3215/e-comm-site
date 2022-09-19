@@ -59,6 +59,7 @@ const signInWithGoogle = async () => {
   }
 };
 
+
 const logout = () => {
   signOut(auth);
 };

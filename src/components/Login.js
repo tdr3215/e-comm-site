@@ -65,6 +65,7 @@ const Login = () => {
               </button>
             </div>
           </form>
+          <Link to={"/register"}>Don't have an account? Register here!</Link>
         </div>
       </div>
     </div>

@@ -12,12 +12,14 @@ import ProductDetails from "./components/ProductDetails";
 import Edit from "./components/Edit";
 import Error from "./components/Error";
 import Checkout from "./components/Checkout";
+import Register from "./components/Register";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Router basename={"/"}>
     <Navbar />
     <Routes>
       <Route name="Login" exact path="/" element={<Login />} />
+      <Route name="Register" path="/register" element={<Register />} />
       <Route name="Home" path="/products" element={<Inventory />} />
       <Route name="New" path="/new" element={<New />} />
       <Route name="Error" path="/error" element={<Error />} />
@@ -27,7 +29,7 @@ root.render(
         element={<ProductDetails />}
       />
       <Route name="Edit" path="/products/:id/edit" element={<Edit />} />
-      <Route name="Checkout" path="/checkout" element={<Checkout/>}/>
+      <Route name="Checkout" path="/checkout" element={<Checkout />} />
     </Routes>
   </Router>
 );
