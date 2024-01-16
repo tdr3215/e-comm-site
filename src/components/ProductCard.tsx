@@ -1,7 +1,10 @@
-import { Link } from "react-router-dom";
-import "../css/Product.css";
+import { Link } from 'react-router-dom';
+import '../css/Product.css';
+import React from 'react';
+import { Product } from '../types/Product';
+import { Props } from '../interfaces/PropsInterface';
 
-const Product = (props) => {
+const ProductCard: React.FC<Props> = (props: Props) => {
   const { name, description, imgURL, id } = props;
 
   return (
@@ -21,4 +24,4 @@ const Product = (props) => {
   );
 };
 
-export default Product;
+export { ProductCard };

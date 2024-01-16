@@ -1,42 +1,43 @@
-import { useState, useEffect } from "react";
-import { auth, db, logout } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useNavigate } from "react-router-dom";
-import {
-  query,
-  collection,
-  getDocs,
-  where,
-  setDoc,
-  doc,
-  getDoc,
-} from "firebase/firestore";
-import Product from "./Product";
-import { Link } from "react-router-dom";
-import data from "../data/db.json";
-import "../css/Inventory.css";
-import api from "../api/products";
+import React, { useState, useEffect, ReactComponentElement } from 'react';
+// import { auth, db, logout } from "../firebase";
+// import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from 'react-router-dom';
+// import {
+//   query,
+//   collection,
+//   getDocs,
+//   where,
+//   setDoc,
+//   doc,
+//   getDoc,
+// } from "firebase/firestore";
+import { ProductCard } from './ProductCard';
+import { Link } from 'react-router-dom';
+import data from '../../api/data/db.json';
+import '../css/Inventory.css';
+import api from '../../api/products';
+import { Product } from '../types/Product';
 
 const getProducts = async () => {
-  const res = await api.get("/products");
+  const res = await api.get('/products');
   return res.data;
 };
 
-const Inventory = () => {
+const Inventory: React.FC = () => {
   const [inventory, setInventory] = useState([]);
-  const [user, loading, error] = useAuthState(auth);
-  const [q, setQ] = useState("");
+  // const [user, loading, error] = useAuthState(auth);
+  const [q, setQ] = useState('');
 
   const filterProducts = async () => {
     try {
       const productList = await getProducts();
       const found = await productList.find(
-        (p) => p.name.toUpperCase() === query.toUpperCase()
+        (p: React.FC) => p.name.toUpperCase() === q.toUpperCase()
       );
       navigate(`/products/${found.id}`);
     } catch (err) {
       console.error(err);
-      navigate("/error");
+      navigate('/error');
     }
   };
   // API calls
@@ -48,8 +49,8 @@ const Inventory = () => {
   // }
 
   useEffect(() => {
-    if (loading) return;
-    if (!user) return navigate("/");
+    // if (loading) return;
+    // if (!user) return navigate('/');
 
     const getAllProducts = async () => {
       const allProducts = await getProducts();
@@ -59,7 +60,7 @@ const Inventory = () => {
       }
     };
     getAllProducts();
-  }, [user, loading]);
+  }, []);
 
   return (
     <div className="container">
@@ -85,14 +86,14 @@ const Inventory = () => {
           </button>
         </form>
         {data &&
-          inventory.map((product, i) => {
+          inventory.map((p: Product, i: number) => {
             return (
-              <Product
+              <ProductCard
                 key={i}
-                imgURL={product.imgURL}
-                name={product.name}
-                description={product.description}
-                id={product.id}
+                imgURL={p.imgURL}
+                name={p.name}
+                description={p.description}
+                id={p.id}
               />
             );
           })}
@@ -103,7 +104,7 @@ const Inventory = () => {
             Add New Product
           </Link>
           <div className="mx-auto">
-            <Link to={"/"} className="btn btn-info" onClick={logout}>
+            <Link to={'/'} className="btn btn-info" onClick={() => {}}>
               Signout
             </Link>
           </div>
@@ -113,5 +114,4 @@ const Inventory = () => {
   );
 };
 
-export { getProducts };
-export default Inventory;
+export { getProducts, Inventory };

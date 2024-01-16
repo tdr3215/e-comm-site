@@ -7,11 +7,11 @@ import ReactDOM from 'react-dom/client';
 // import New from "./components/New.js";
 // import Navbar from "./components/Navbar";
 // import Login from "./components/Login";
-// import Inventory from "./components/Inventorvy";
+import { Inventory } from './components/Inventory';
 // import ProductDetails from "./components/ProductDetails";
 // import Edit from "./components/Edit";
 // import Error from "./components/Error";
-// import Checkout from "./components/Checkout";
+import { Checkout } from './components/Checkout';
 import { Register } from './components/Register';
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 // root.render(
@@ -29,7 +29,6 @@ import { Register } from './components/Register';
 //         element={<ProductDetails />}
 //       />
 //       <Route name="Edit" path="/products/:id/edit" element={<Edit />} />
-//       <Route name="Checkout" path="/checkout" element={<Checkout />} />
 //     </Routes>
 //   </Router>
 // );
@@ -37,6 +36,8 @@ const App: React.FC = () => (
   <Router basename="/">
     <Routes>
       <Route path="/register" element={<Register />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/home" element={<Inventory />} />
     </Routes>
   </Router>
 );

@@ -1,4 +1,6 @@
-const Checkout = () => {
+import React from 'react';
+
+const Checkout: React.FC = () => {
   return (
     <div className="container">
       <div className="row justify-content-center">
@@ -8,4 +10,4 @@ const Checkout = () => {
   );
 };
 
-export default Checkout;
+export { Checkout };
