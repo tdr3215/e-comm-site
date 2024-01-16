@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom/client';
 // import "./index.css";
 
 // import reportWebVitals from "./reportWebVitals";
-// import New from "./components/New.js";
-// import Navbar from "./components/Navbar";
-// import Login from "./components/Login";
+import { New } from './components/New';
+import Navbar from './components/Navbar';
+import { Login } from './components/Login';
 import { Inventory } from './components/Inventory';
-// import ProductDetails from "./components/ProductDetails";
-// import Edit from "./components/Edit";
-// import Error from "./components/Error";
+import { ProductDetails } from './components/ProductDetails';
+import { Edit } from './components/Edit';
+import { Error } from './components/Error';
 import { Checkout } from './components/Checkout';
 import { Register } from './components/Register';
 // const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -34,17 +34,20 @@ import { Register } from './components/Register';
 // );
 const App: React.FC = () => (
   <Router basename="/">
+    <Navbar />
     <Routes>
       <Route path="/register" element={<Register />} />
-      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/home" element={<Inventory />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/new" element={<New />} />
+      <Route path="/products/:id/edit" element={<Edit />} />
+      <Route path="products/:id" element={<ProductDetails />} />
+      <Route path="/error" element={<Error />} />
+      {/* change /login to  userAuth ? /home : /login */}
     </Routes>
   </Router>
 );
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <App />
 );
-// // If you want to start measuring performance in your app, pass a function
-// // to log results (for example: reportWebVitals(console.log))
-// // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-// reportWebVitals();

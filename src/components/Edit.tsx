@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import api from "../api/products";
-const Edit = () => {
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import api from '../../api/products';
+const Edit: React.FC = () => {
   const { id } = useParams();
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState("");
-  const [imgURL, setimgURL] = useState("");
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [imgURL, setimgURL] = useState('');
   const navigate = useNavigate();
 
-  const handleUpdate = async (p) => {
+  const handleUpdate = async () => {
     await api.put(`/products/${id}`, {
       name,
       description,
       price,
       imgURL,
     });
+
     navigate(`/products/${id}`);
   };
 
@@ -112,4 +113,4 @@ const Edit = () => {
   );
 };
 
-export default Edit;
+export { Edit };

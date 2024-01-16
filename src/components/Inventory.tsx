@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 import data from '../../api/data/db.json';
 import '../css/Inventory.css';
 import api from '../../api/products';
-import { Product } from '../types/Product';
+import { Product } from '../utils/types/Product';
 
 const getProducts = async () => {
   const res = await api.get('/products');
@@ -94,6 +94,7 @@ const Inventory: React.FC = () => {
                 name={p.name}
                 description={p.description}
                 id={p.id}
+                price={p.price}
               />
             );
           })}

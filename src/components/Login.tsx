@@ -1,22 +1,22 @@
-import { useState, useEffect } from "react";
-import { auth, signInWithGoogle, logout } from "../firebase";
-import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useState, useEffect } from 'react';
+// import { auth, signInWithGoogle, logout } from "../firebase";
+import { useAuthState } from 'react-firebase-hooks/auth';
 
-import "../css/Login.css";
-import { Link, useNavigate } from "react-router-dom";
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+import '../css/Login.css';
+import { Link, useNavigate } from 'react-router-dom';
+const Login: React.FC = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  // const [user, loading, error] = useAuthState(auth);
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (loading) {
-      // maybe trigger a loading screen
-      return;
-    }
-    if (user) navigate("/products");
-  }, [user, loading]);
+    // if (loading) {
+    //   // maybe trigger a loading screen
+    //   return;
+    // }
+    // if (user) navigate("/products");
+  }, []);
 
   return (
     <div className="container justify-content-center">
@@ -54,22 +54,25 @@ const Login = () => {
             </div>
             <div className="justify-content-between">
               <Link
-                to={"/products"}
+                to={'/products'}
                 className="btn btn-primary border-white"
-                onClick={signInWithGoogle}
+                onClick={() => {}}
               >
                 Login with Google
               </Link>
-              <button onClick={logout} className="btn btn-primary border-white">
+              <button
+                onClick={() => {}}
+                className="btn btn-primary border-white"
+              >
                 Logout
               </button>
             </div>
           </form>
-          <Link to={"/register"}>Don't have an account? Register here!</Link>
+          <Link to={'/register'}>Don't have an account? Register here!</Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export { Login };

@@ -1,8 +1,8 @@
-type Product = {
+interface Props {
   name: string;
   description: string;
   imgURL: string;
   id: string;
-};
-
-export type { Product };
+  price: string;
+}
+export type { Props };

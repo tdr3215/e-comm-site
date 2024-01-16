@@ -1,15 +1,15 @@
-import { useNavigate } from "react-router-dom";
-import api from "../api/products";
-import { useState } from "react";
-import { v4 as uuid } from "uuid";
-const New = (props) => {
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
-  const [price, setPrice] = useState(0);
-  const [imgURL, setimgURL] = useState("");
+import { useNavigate } from 'react-router-dom';
+import api from '../../api/products';
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
+const New: React.FC = () => {
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
+  const [price, setPrice] = useState('');
+  const [imgURL, setimgURL] = useState('');
 
   const data = {
-    id: uuid(),
+    id: uuidv4(),
     name: name,
     description: description,
     price: price,
@@ -17,11 +17,11 @@ const New = (props) => {
   };
 
   const navigate = useNavigate();
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const postProduct = await api.post("http://localhost:8000/products", data);
+    const postProduct = await api.post('http://localhost:8000/products', data);
     if (postProduct) {
-      navigate("/products");
+      navigate('/products');
     }
   };
 
@@ -107,4 +107,4 @@ const New = (props) => {
   );
 };
 
-export default New;
+export { New };

@@ -3,6 +3,7 @@
   "name": "ecomm",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "dependencies": {
     "-": "^0.0.1",
     "@testing-library/jest-dom": "^5.16.5",
@@ -11,15 +12,14 @@
     "@vitejs/plugin-react-swc": "^3.5.0",
     "axios": "^0.27.2",
     "concurrently": "^8.2.2",
-    "firebase": "^9.9.4",
     "gh-pages": "^4.0.0",
     "json-server": "^0.17.0",
     "nodemon": "^3.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-firebase-hooks": "^5.0.3",
     "react-router-dom": "^6.3.0",
     "save-dev": "^0.0.1-security",
+    "uuid": "^9.0.1",
     "vite": "^5.0.11",
     "vite-plugin-svgr": "^4.2.0",
     "vite-tsconfig-paths": "^4.2.3",
@@ -52,7 +52,7 @@
   "devDependencies": {
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
-    "ts-node": "^10.9.2",
+    "@types/uuid": "^9.0.7",
     "typescript": "^5.3.3"
   }
 }
